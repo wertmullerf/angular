@@ -1,0 +1,10 @@
+<h1>Los Simpsons</h1>
+<hr />
+<div class="row">
+  <div class="col">
+    <app-simpsons-list [characterList]="characters" />
+  </div>
+  <div class="col">
+    <app-simpsons-form (formSubmit)="onFormSubmit($event)" />
+  </div>
+</div>

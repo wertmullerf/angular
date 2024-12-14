@@ -1,0 +1,25 @@
+<h4>Agregar PJ</h4>
+<form class="row" (ngSubmit)="submit($event)">
+  <input
+    type="text"
+    class="form-control mb-2"
+    placeholder="Nombre del PJ"
+    [(ngModel)]="input1"
+    name="name"
+  />
+  <input
+    type="number"
+    class="form-control mb-2"
+    placeholder="Edad"
+    [(ngModel)]="input2"
+    name="age"
+  />
+  <input
+    type="text"
+    class="form-control mb-2"
+    placeholder="Genero"
+    [(ngModel)]="input3"
+    name="gender"
+  />
+  <button type="submit" class="btn btn-primary">Agregar</button>
+</form>

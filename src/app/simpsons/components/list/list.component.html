@@ -1,0 +1,21 @@
+<h4>Listado</h4>
+<ul class="list-group">
+  <li
+    *ngFor="
+      let item of characterList;
+      let i = index;
+      let isFirst = first;
+      let isLast = last;
+      let isEven = even;
+      let isOdd = odd
+    "
+    class="list-group-item"
+    [ngClass]="{
+      'list-group-item-success': isLast,
+      'list-group-item-dark': isOdd
+    }"
+  >
+    {{ i + 1 }} - {{ item.name }} - AGE: {{ item.age }} - GENDER:
+    {{ item.gender }}
+  </li>
+</ul>
