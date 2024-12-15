@@ -2,9 +2,12 @@
 <hr />
 <div class="row">
   <div class="col">
-    <app-simpsons-list [characterList]="characters" />
+    <app-simpsons-list
+      [characterList]="smpService.characters"
+      (deleteID)="smpService.onDeleteByID($event)"
+    />
   </div>
   <div class="col">
-    <app-simpsons-form (formSubmit)="onFormSubmit($event)" />
+    <app-simpsons-form (formSubmit)="smpService.onFormSubmit($event)" />
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Character } from '../../interfaces/character.interface';
 
 @Component({
@@ -8,4 +8,9 @@ import { Character } from '../../interfaces/character.interface';
 })
 export class SimpsonsListComponent {
   @Input() characterList!: Character[];
+  @Output() deleteID = new EventEmitter<string>();
+  deleteById(id?: string): void {
+    if (!id) return;
+    this.deleteID.emit(id);
+  }
 }

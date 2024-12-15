@@ -1,3 +1,4 @@
+import { Character } from './../../interfaces/character.interface';
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
@@ -6,22 +7,27 @@ import { Component, EventEmitter, Output } from '@angular/core';
   standalone: false,
 })
 export class SimpsonsFormComponent {
-  @Output() formSubmit = new EventEmitter<{
-    name: string;
-    age: number;
-    gender: string;
-  }>();
-  input1: string = '';
-  input2!: number;
-  input3: string = '';
+  character: Character = {
+    name: '',
+    age: 0,
+    gender: '',
+  };
+  @Output() formSubmit = new EventEmitter<Character>();
 
   submit(e: Event) {
     e.preventDefault();
-    console.log({ 1: this.input1, 2: this.input2, 3: this.input3 });
-    this.formSubmit.emit({
-      name: this.input1,
-      age: this.input2,
-      gender: this.input3,
-    });
+    if (this.character.name.length > 0 && this.character.gender.length > 0) {
+      const characterCopy = { ...this.character }; // Hacemos una copia del objeto
+      this.formSubmit.emit(characterCopy);
+      this.resetForm();
+    } else {
+      return;
+    }
+  }
+
+  resetForm(): void {
+    this.character.name = '';
+    this.character.age = 0;
+    this.character.gender = '';
   }
 }
