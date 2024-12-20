@@ -2,15 +2,20 @@
 <hr />
 <div class="row">
   <div class="col">
-    <shared-search-box
-      (onvalue)="searchByRegion($event)"
-      [placeHolder]="'Buscar por región'"
-    /><!--Escucha el evento y pasa el valor-->
+    <button
+      *ngFor="let region of regions"
+      class="badgeSelector badge rounded-pill m-1 text-primary"
+      [ngClass]="region == selectedRegion ? 'text-bg-primary text-light' : ''"
+      (click)="searchByRegion(region)"
+    >
+      {{ region }}
+    </button>
   </div>
 </div>
 <hr />
 <div class="row">
   <div class="col">
+    <shared-loader *ngIf="isLoading" />
     <app-country-table [countries]="countries" />
   </div>
 </div>

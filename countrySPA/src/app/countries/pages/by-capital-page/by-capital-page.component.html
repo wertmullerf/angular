@@ -3,6 +3,7 @@
 <div class="row">
   <div class="col">
     <shared-search-box
+      [initialValue]="initialValue"
       (onvalue)="searchByCapital($event)"
       [placeHolder]="'Buscar por capital'"
     /><!--Escucha el evento y pasa el valor-->
@@ -11,6 +12,7 @@
 <hr />
 <div class="row">
   <div class="col">
+    <shared-loader *ngIf="isLoading" />
     <app-country-table [countries]="countries" />
   </div>
 </div>
